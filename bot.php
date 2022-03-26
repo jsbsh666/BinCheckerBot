@@ -12,7 +12,7 @@
     $start_msg = $_ENV['START_MSG']; 
 
 if($message == "/start"){
-    send_message($chat_id,$message_id, "***Hi $firstname \nUse /bin xxxxxx 你要查的 BIN \n$start_msg***");
+    send_message($chat_id,$message_id, "***Hi $firstname \n使用方法：!bin xxxxxx 你要查的 BIN \n$start_msg***");
 }
 
 //Bin Lookup
