@@ -12,15 +12,15 @@
     $start_msg = $_ENV['START_MSG']; 
 
 if($message == "/start"){
-    send_message($chat_id,$message_id, "***Hi $firstname \nUse !bin xxxxxx to Check BIN \n$start_msg***");
+    send_message($chat_id,$message_id, "***Hi $firstname \nUse /bin xxxxxx 你要查的 BIN \n$start_msg***");
 }
 
 //Bin Lookup
-if(strpos($message, "!bin") === 0){
+if(strpos($message, "/bin") === 0){
     $bin = substr($message, 5);
     $curl = curl_init();
     curl_setopt_array($curl, [
-    CURLOPT_URL => "https://binsu-api.vercel.app/api/".$bin,
+    CURLOPT_URL => "https://binwebckbot.vercel.app/api/".$bin,
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_FOLLOWLOCATION => true,
     CURLOPT_ENCODING => "",
@@ -49,17 +49,17 @@ if(strpos($message, "!bin") === 0){
  $result1 = $data['result'];
 
     if ($result1 == true) {
-    send_message($chat_id,$message_id, "***✅ Valid BIN
+    send_message($chat_id,$message_id, "***✅ 有效的 BIN
 Bin: $bin
-Brand: $brand
-Level: $level
-Bank: $bank
-Country: $country $flag
-Type:$type
-Checked By @$username ***");
+品牌: $brand
+级别: $level
+银行: $bank
+国家: $country $flag
+类型:$type
+检查者 By @$username ***");
     }
 else {
-    send_message($chat_id,$message_id, "***Enter Valid BIN***");
+    send_message($chat_id,$message_id, "***X请输入有效的 BIN***");
 }
 }
     function send_message($chat_id,$message_id, $message){
